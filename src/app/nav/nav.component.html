@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">Dating App</a>
+
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="#">Matches</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">LIsts</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">Messages</a>
+    </li>
+
+  </ul>
+  <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()" >
+    <input class="form-control mr-sm-2" type="text" 
+    name="username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required aria-label="Search">
+    <input class="form-control mr-sm-2" type="password" 
+    name="password" placeholder="Password"[(ngModel)]="model.password" #password="ngModel" required  aria-label="Search">
+    <button class="btn btn-success my-2 my-sm-0" [disabled]="!loginForm.valid" type="submit">Login</button>
+  </form>
+</nav>
+<pre>
+  
+{{username.untouched}} $untouched The field has not been touched yet
+{{username.touched}} $touched The field has been touched
+{{username.pristine}} $pristine The field has not been modified yet
+{{username.dirty}} $dirty The field has been modified
+{{username.invalid}} $invalid The field content is not valid
+{{username.valid}} $valid The field content is valid
+Thuey are all properties of the input field, and are either true or false.
+
+Forms have the following states:
+
+{{loginForm.pristine}} $pristine No fields have been modified yet
+{{loginForm.dirty}} $dirty One or more have been modified
+{{loginForm.invalid}} $invalid The form content is not valid
+{{loginForm.valid}} $valid The form content is valid
+{{loginForm.submitted}}  $submitted The form is submitted
+
+
+values: {{loginForm.value | json}}
+</pre>

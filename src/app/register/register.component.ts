@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.model);  }
   //
   register(){
-    debugger;
+
     this.authService.register(this.model)
     .subscribe(
       () => {

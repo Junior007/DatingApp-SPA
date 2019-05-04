@@ -37,7 +37,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 }
 
 // Ésta clase se inyecta en el app.module.ts module
-export const ErrorInterceptorProvide = {
+export const ErrorInterceptorProvider = {
     provide: HTTP_INTERCEPTORS,
     useClass: ErrorInterceptor,
     multi: true

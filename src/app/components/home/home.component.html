@@ -13,4 +13,9 @@
     <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
   </div>
 </div>
-<app-value [values] = "values"></app-value>
+<app-value></app-value>
+
+
+Ejemplo de paso de parámetros (input/output)
+<app-sample [values]= "values" (eventToParent)="getEventFromChild($event)"></app-sample>
+

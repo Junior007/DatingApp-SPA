@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ValuesService } from '../_services/values.service';
 
 @Component({
   selector: 'app-home',
@@ -10,11 +8,13 @@ import { ValuesService } from '../_services/values.service';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
-  values: any;
-  constructor(private valuesService: ValuesService) {}
+  constructor() {}
 
+  // Para ejemplo de paso de parametros
+  values: any = ['valor 1', 'valor2'];
+  //  
   ngOnInit() {
-    this.getValues();
+
   }
   //
   registerToggle() {
@@ -24,16 +24,9 @@ export class HomeComponent implements OnInit {
   cancelRegisterMode(registerMode: boolean) {
     this.registerMode = registerMode; //bastaría con poner false, pero así se ejemplifica el paso de parámetros
   }
-  //
-  getValues() {
-    this.valuesService.getValues()
-    .subscribe(response => {
-      this.values = response;
-      console.log('obtenidos valores');
-    },
-    error => {
-      console.log(error);
-    });
-
+  // Ejemplo de recogida de eventos (parámetros)
+  getEventFromChild(param: any) {
+    alert(param.param1);
+    alert(param.param2);
   }
 }

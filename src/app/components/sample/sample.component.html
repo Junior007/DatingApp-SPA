@@ -1,0 +1,12 @@
+<table class="table-striped table-bordered">
+    <thead>
+      <tr><th>Valor</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of values">
+        <td>{{item}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)='clickButton()'>Click para enviar parámetro al padre</button>

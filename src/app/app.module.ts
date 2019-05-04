@@ -5,21 +5,30 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 //
-import { NavComponent } from './nav/nav.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { ValueComponent } from './value/value.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavComponent } from './components/nav/nav.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ValueComponent } from './components/values/value.component';
 //
-import { ErrorInterceptorProvide } from './_services/error.interceptor';
-import { AuthService } from './_services/auth.service';
+import { AuthService } from './_services/auth/auth.service';
+//
+import { ErrorInterceptorProvider } from './_interceptors/error/error.interceptor';
+import { SecurityInterceptorProvider } from './_interceptors/security/security.interceptor';
+import { UrlInterceptorProvider } from './_interceptors/url/url.interceptor';
+import { ValuesService } from './_services/values/values.service';
+import { EnvironmentService } from './_services/environment/environment.service';
+import { SampleComponent } from './components/sample/sample.component';
 
 @NgModule({
    declarations: [
+      SampleComponent,
       AppComponent,
       NavComponent,
       RegisterComponent,
       ValueComponent,
-      HomeComponent
+      HomeComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
@@ -29,8 +38,12 @@ import { AuthService } from './_services/auth.service';
    ],
    providers: [
       AuthService,
-      ErrorInterceptorProvide
-   ],
+      ValuesService,
+      EnvironmentService,
+      UrlInterceptorProvider,
+      SecurityInterceptorProvider,
+      ErrorInterceptorProvider,
+    ],
    bootstrap: [
       AppComponent
    ]

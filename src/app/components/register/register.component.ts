@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../_services/auth.service';
+import { AuthService } from '../../_services/auth/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -14,10 +14,9 @@ export class RegisterComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    console.log(this.model);  }
+  }
   //
   register(){
-
     this.authService.register(this.model)
     .subscribe(
       () => {

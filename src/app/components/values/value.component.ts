@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ValuesService } from 'src/app/_services/values/values.service';
+import { Value } from 'src/app/models/all';
 
 @Component({
   selector: 'app-value',
@@ -9,7 +10,7 @@ import { ValuesService } from 'src/app/_services/values/values.service';
 
 export class ValueComponent implements OnInit {
   //
-  values: any;
+  values: Value[];
   constructor(private valuesService: ValuesService) {}
   ngOnInit() { 
     this.valuesService.getValues().subscribe(

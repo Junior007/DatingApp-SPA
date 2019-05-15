@@ -7,18 +7,16 @@ import { AuthService } from '../../_services/auth/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  model: any = {};
-
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  isLogged(){
+  isLogged() {
     return this.authService.isLogged();
   }
 
-  logOut(){
+  logOut() {
     this.authService.logOut();
   }
 }

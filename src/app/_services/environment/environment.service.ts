@@ -6,16 +6,16 @@ import { Injectable } from '@angular/core';
 export class EnvironmentService {
 
 constructor() { }
-  baseUrl(){
+  baseUrl(): string {
     return 'http://localhost:5000/api/';
   }
-  authToken(){
+  authToken(): string {
     return localStorage.getItem('token');
   }
-  setAuthToken(token: string){
+  setAuthToken(token: string) {
     localStorage.setItem('token', token);
   }
-  removeAuthToken(){
+  removeAuthToken() {
     localStorage.removeItem('token');
   }
 }

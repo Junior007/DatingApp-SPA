@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import {appRoutes} from './routes';
 import { AppComponent } from './app.component';
 //
 import { HomeComponent } from './components/home/home.component';
@@ -19,6 +20,8 @@ import { UrlInterceptorProvider } from './_interceptors/url/url.interceptor';
 import { ValuesService } from './_services/values/values.service';
 import { EnvironmentService } from './_services/environment/environment.service';
 import { SampleComponent } from './components/sample/sample.component';
+import { Router, RouterModule } from '@angular/router';
+
 
 @NgModule({
    declarations: [
@@ -34,7 +37,8 @@ import { SampleComponent } from './components/sample/sample.component';
       BrowserModule,
       AppRoutingModule,
       HttpClientModule,
-      FormsModule
+      FormsModule,
+      //RouterModule.forRoot(appRoutes),
    ],
    providers: [
       AuthService,

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { EnvironmentService } from '../environment/environment.service';
 import { LoginUser } from 'src/app/models/all';
 
@@ -9,6 +10,8 @@ import { LoginUser } from 'src/app/models/all';
   providedIn: 'root'
 })
 export class AuthService {
+
+
   constructor(private http: HttpClient, private env: EnvironmentService) { }
 
   login(model: LoginUser) {
@@ -23,8 +26,13 @@ export class AuthService {
 
   }
   //
-  logOut(){
+  logOut(): Observable<boolean> {
     this.env.removeAuthToken();
+    return new Observable<boolean>(
+      subscriber=>{
+        subscriber.next(true);
+      }
+    );
   }
   //
   register(model: LoginUser) {

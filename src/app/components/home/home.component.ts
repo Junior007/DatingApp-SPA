@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../_services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   registerMode = false;
-  constructor() {}
+  constructor(private authService: AuthService) { }
 
-  // Para ejemplo de paso de parametros
-  values: any = ['valor 1', 'valor2'];
   //  
   ngOnInit() {
 
@@ -24,9 +23,10 @@ export class HomeComponent implements OnInit {
   cancelRegisterMode(registerMode: boolean) {
     this.registerMode = registerMode; //bastaría con poner false, pero así se ejemplifica el paso de parámetros
   }
-  // Ejemplo de recogida de eventos (parámetros)
-  getEventFromChild(param: any) {
-    alert(param.param1);
-    alert(param.param2);
+  //
+  isLogged() {
+    return this.authService.isLogged();
   }
+  //
+
 }

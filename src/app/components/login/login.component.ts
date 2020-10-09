@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/auth/auth.service';
 import { LoginUser } from 'src/app/models/all';
+import {AlertifyService} from '../../_services/alertify/alertify.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { LoginUser } from 'src/app/models/all';
 
 export class LoginComponent implements OnInit {
   model: LoginUser = {username: '', password: ''};
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private alertifyService: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -18,12 +19,13 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.model).subscribe(
       next => {
-        console.log('login realizado');
+        this.alertifyService.message('login realizado');
       },
       error => {
-        console.log(error);
+        this.alertifyService.warning('Error de autentificación');
       });
   }
+
   //
   isLogged(){
     return this.authService.isLogged();

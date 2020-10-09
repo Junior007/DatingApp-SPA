@@ -3,9 +3,12 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import {appRoutes} from './routes';
-import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Router, RouterModule } from '@angular/router';
+import { appRoutes } from './routes';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 //
+import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
@@ -19,13 +22,12 @@ import { SecurityInterceptorProvider } from './_interceptors/security/security.i
 import { UrlInterceptorProvider } from './_interceptors/url/url.interceptor';
 import { ValuesService } from './_services/values/values.service';
 import { EnvironmentService } from './_services/environment/environment.service';
-import { SampleComponent } from './components/sample/sample.component';
-import { Router, RouterModule } from '@angular/router';
+
+
 
 
 @NgModule({
    declarations: [
-      SampleComponent,
       AppComponent,
       NavComponent,
       RegisterComponent,
@@ -35,9 +37,11 @@ import { Router, RouterModule } from '@angular/router';
    ],
    imports: [
       BrowserModule,
-      AppRoutingModule,
       HttpClientModule,
       FormsModule,
+      AppRoutingModule,
+      BrowserAnimationsModule,
+      BsDropdownModule.forRoot()
       //RouterModule.forRoot(appRoutes),
    ],
    providers: [
@@ -47,7 +51,7 @@ import { Router, RouterModule } from '@angular/router';
       UrlInterceptorProvider,
       SecurityInterceptorProvider,
       ErrorInterceptorProvider,
-    ],
+   ],
    bootstrap: [
       AppComponent
    ]

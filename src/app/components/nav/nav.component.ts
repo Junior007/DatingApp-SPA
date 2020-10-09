@@ -17,11 +17,16 @@ export class NavComponent implements OnInit {
   isLogged() {
     return this.authService.isLogged();
   }
+  user() {
+
+    return this.authService.user();
+
+  }
   //
   //
   logOut() {
     this.authService.logOut().subscribe(
-      next => { this.alertifyService.message('Cerró la sesión') }
+      next => { this.alertifyService.message('Cerró la sesión'); }
 
     );
   }

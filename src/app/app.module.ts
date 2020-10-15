@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Router, RouterModule } from '@angular/router';
-import { appRoutes } from './routes';
+//import { Router, RouterModule } from '@angular/router';
+//import { appRoutes } from './routes';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 //
 import { AppComponent } from './app.component';
@@ -22,6 +22,8 @@ import { SecurityInterceptorProvider } from './_interceptors/security/security.i
 import { UrlInterceptorProvider } from './_interceptors/url/url.interceptor';
 import { ValuesService } from './_services/values/values.service';
 import { EnvironmentService } from './_services/environment/environment.service';
+import { AppRoutingModule } from './app-routing.module';
+import { appRoutes } from './routes';
 
 
 
@@ -41,8 +43,8 @@ import { EnvironmentService } from './_services/environment/environment.service'
       FormsModule,
       AppRoutingModule,
       BrowserAnimationsModule,
-      BsDropdownModule.forRoot()
-      //RouterModule.forRoot(appRoutes),
+      BsDropdownModule.forRoot(),
+      RouterModule.forRoot(appRoutes),
    ],
    providers: [
       AuthService,

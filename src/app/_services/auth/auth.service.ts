@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { EnvironmentService } from '../environment/environment.service';
-import { LoginUser } from 'src/app/models/all';
+import { LoginUser, UserToken } from 'src/app/models/all';
 import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
@@ -15,13 +15,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private env: EnvironmentService) { }
 
-  login(model: LoginUser) {
+  logIn(model: LoginUser): Observable<void> {
     return this.http.post('auth/login', model)
-      .pipe(map((response: any) => {
+      .pipe(map((response: UserToken) => {
         const user = response;
         if (user) {
           this.env.setAuthToken(user.token);
-          this.decodedToken = this.jwtHelperService.decodeToken(user.token);
         }
 
       }));

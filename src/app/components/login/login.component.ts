@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/auth/auth.service';
 import { LoginUser } from 'src/app/models/all';
-import {AlertifyService} from '../../_services/alertify/alertify.service';
+import { AlertifyService } from '../../_services/alertify/alertify.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,24 @@ import {AlertifyService} from '../../_services/alertify/alertify.service';
 })
 
 export class LoginComponent implements OnInit {
+
   model: LoginUser = {username: '', password: ''};
-  constructor(private authService: AuthService, private alertifyService: AlertifyService) { }
+
+  constructor(private authService: AuthService, private alertifyService: AlertifyService, private router: Router) { }
 
   ngOnInit() {
   }
   //
   login() {
-    this.authService.login(this.model).subscribe(
+    this.authService.logIn(this.model).subscribe(
       next => {
         this.alertifyService.message('login realizado');
       },
       error => {
         this.alertifyService.warning('Error de autentificación');
+      },
+      () => {
+        this.router.navigate(['/members']);
       });
   }
 

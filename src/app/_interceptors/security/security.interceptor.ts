@@ -8,20 +8,25 @@ import { EnvironmentService } from 'src/app/_services/environment/environment.se
 
 @Injectable()
 export class SecurityInterceptor implements HttpInterceptor {
-  constructor(private env: EnvironmentService){}
+  constructor(private env: EnvironmentService) { }
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  const token = this.env.authToken();
+    const token = this.env.authToken();
 
-  if (token) {
+    if (token) {
+      /*no hacde falta ya porque la libreria de jwt está configurada para hacerlo*/
+      /*
       const cloned = req.clone({
           headers: req.headers.set('Authorization', 'Bearer ' + token)
       });
 
       return next.handle(cloned);
-  } else {
+      */
+
       return next.handle(req);
+    } else {
+      return next.handle(req);
+    }
   }
-}
 }
 //
 // Ésta clase se inyecta en el app.module.ts module

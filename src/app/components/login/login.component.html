@@ -1,7 +1,24 @@
-<form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
-  <input class="form-control mr-sm-2" type="text"
-         name="username" placeholder="Username" [(ngModel)]="model.username" #username="ngModel" required aria-label="Search">
-  <input class="form-control mr-sm-2" type="password"
-         name="password" placeholder="Password" [(ngModel)]="model.password" required aria-label="Search">
-  <button class="btn btn-success my-2 my-sm-0" [disabled]="!loginForm.valid" type="submit">Login</button>
-</form>
+<div class="dropdown" dropdown *ngIf="isLogged()">
+
+       <a class="dropdown-toggle text-light" dropdownToggle>
+              Welcome {{user()|titlecase}}
+       </a>
+
+       <div class="dropdown-menu mt-3" *dropdownMenu>
+              <a class="dropdown-item" href="#"><i class="fa fa-user"></i>&nbsp;Edit Profile</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#" (click)="logOut()"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
+       </div>
+
+</div>
+
+<div *ngIf="!isLogged()">
+
+       <form #loginForm="ngForm" class="form-inline my-2 my-lg-0" (ngSubmit)="login()">
+              <input class="form-control mr-sm-2" type="text" name="username" placeholder="Username"
+                     [(ngModel)]="model.username" #username="ngModel" required aria-label="Search">
+              <input class="form-control mr-sm-2" type="password" name="password" placeholder="Password"
+                     [(ngModel)]="model.password" required aria-label="Search">
+              <button class="btn btn-success my-2 my-sm-0" [disabled]="!loginForm.valid" type="submit">Login</button>
+       </form>
+</div>

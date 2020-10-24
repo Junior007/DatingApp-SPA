@@ -31,7 +31,22 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/members']);
       });
   }
+  user() {
 
+    return this.authService.user();
+
+  }
+  //
+  //
+  logOut() {
+    this.authService.logOut().subscribe(
+      next => {
+        this.router.navigate(['/home']);
+        this.alertifyService.message('Cerró la sesión');
+      }
+
+    );
+  }
   //
   isLogged(){
     return this.authService.isLogged();

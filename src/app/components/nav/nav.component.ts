@@ -18,20 +18,5 @@ export class NavComponent implements OnInit {
   isLogged() {
     return this.authService.isLogged();
   }
-  user() {
 
-    return this.authService.user();
-
-  }
-  //
-  //
-  logOut() {
-    this.authService.logOut().subscribe(
-      next => {
-        this.router.navigate(['/home']);
-        this.alertifyService.message('Cerró la sesión');
-      }
-
-    );
-  }
 }

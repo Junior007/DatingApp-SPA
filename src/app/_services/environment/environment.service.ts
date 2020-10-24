@@ -12,7 +12,7 @@ export class EnvironmentService {
   }
   //
   baseUrlClient(): string {
-    return 'http://localhost:41923/api/';
+    return 'http://localhost:4200/';
   }
   //
   authToken(): string {

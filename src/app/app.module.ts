@@ -32,6 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { appRoutes } from './routes';
 import { MemberDetailedResolve } from './_resolver/member-detailed.resolver';
 import { MemberListResolve } from './_resolver/member-list.resolver';
+import { UsersService } from './_services/users/Users.service';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 
 
@@ -53,13 +55,10 @@ const environmentService = new EnvironmentService();
    ],
    imports: [
       BrowserModule,
-      HttpClientModule,
       FormsModule,
       AppRoutingModule,
-      BrowserAnimationsModule,
-      BsDropdownModule.forRoot(),
-      TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
+      HttpClientModule,
       JwtModule.forRoot({
          config: {
             tokenGetter: (request) => environmentService.authToken(),
@@ -68,11 +67,17 @@ const environmentService = new EnvironmentService();
          }
       }
 
-      )
+      ),
+      BrowserAnimationsModule,
+      BsDropdownModule.forRoot(),
+      TabsModule.forRoot(),
+      NgxGalleryModule
+
    ],
    providers: [
       AuthService,
       ValuesService,
+      UsersService,
       EnvironmentService,
       UrlInterceptorProvider,
       SecurityInterceptorProvider,

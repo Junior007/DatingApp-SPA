@@ -2,12 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+// import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 //
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,9 +16,10 @@ import { NavComponent } from './components/nav/nav.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ValueComponent } from './components/values/value.component';
-
+//
 import { MemberListComponent } from './components/members/member-list/member-list.component';
 import { MemberCardComponent } from './components/members/member-card/member-card.component';
+import { MemberDetailComponent } from './components/members/member-detail/member-detail.component';
 //
 import { ErrorInterceptorProvider } from './_interceptors/error/error.interceptor';
 import { SecurityInterceptorProvider } from './_interceptors/security/security.interceptor';
@@ -28,6 +30,8 @@ import { ValuesService } from './_services/values/values.service';
 import { EnvironmentService } from './_services/environment/environment.service';
 import { AppRoutingModule } from './app-routing.module';
 import { appRoutes } from './routes';
+import { MemberDetailedResolve } from './_resolver/member-detailed.resolver';
+import { MemberListResolve } from './_resolver/member-list.resolver';
 
 
 
@@ -44,7 +48,8 @@ const environmentService = new EnvironmentService();
       HomeComponent,
       LoginComponent,
       MemberListComponent,
-      MemberCardComponent
+      MemberCardComponent,
+      MemberDetailComponent,
    ],
    imports: [
       BrowserModule,
@@ -53,6 +58,7 @@ const environmentService = new EnvironmentService();
       AppRoutingModule,
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
+      TabsModule.forRoot(),
       RouterModule.forRoot(appRoutes),
       JwtModule.forRoot({
          config: {
@@ -71,6 +77,8 @@ const environmentService = new EnvironmentService();
       UrlInterceptorProvider,
       SecurityInterceptorProvider,
       ErrorInterceptorProvider,
+      MemberDetailedResolve,
+      MemberListResolve,
    ],
    bootstrap: [
       AppComponent

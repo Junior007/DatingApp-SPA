@@ -12,7 +12,7 @@ export class UsersService {
 
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>('user/' + id.toString());
+    return this.http.get<User>('users/' + id.toString());
   }
   //
   getUsers(): Observable<User[]> {

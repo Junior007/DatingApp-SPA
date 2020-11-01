@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent implements OnInit {
 
-  model: LoginUser = {username: '', password: ''};
+  model: LoginUser = { username: '', password: '' };
 
   constructor(private authService: AuthService, private alertifyService: AlertifyService, private router: Router) { }
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
         this.alertifyService.warning('Error de autentificación');
       },
       () => {
+        this.model = { username: '', password: '' };
         this.router.navigate(['/members']);
       });
   }
@@ -42,13 +43,12 @@ export class LoginComponent implements OnInit {
     this.authService.logOut().subscribe(
       next => {
         this.router.navigate(['/home']);
+        this.model = { username: '', password: '' };
         this.alertifyService.message('Cerró la sesión');
-      }
-
-    );
+      });
   }
   //
-  isLogged(){
+  isLogged() {
     return this.authService.isLogged();
   }
 

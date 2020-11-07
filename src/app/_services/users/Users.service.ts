@@ -18,7 +18,9 @@ export class UsersService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('users');
   }
-
-
+  //
+  putUser(id: number, user: User) {
+    return this.http.put('users/' + id, user);
+  }
 
 }

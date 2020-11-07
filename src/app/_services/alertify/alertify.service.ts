@@ -14,12 +14,12 @@ export class AlertifyService {
       if (e) {
         okCallback();
       }
-      //else { }
+      // else { }
     });
   }
   //
   success(message: string) {
-    alertify.confirm(message);
+    alertify.success(message);
 
   }
   //

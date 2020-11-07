@@ -10,8 +10,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class AuthService {
 
-  jwtHelperService = new JwtHelperService();
-  decodedToken: any;
+  private jwtHelperService = new JwtHelperService();
+  // private decodedToken: any;
 
   constructor(private http: HttpClient, private env: EnvironmentService) { }
 
@@ -26,6 +26,7 @@ export class AuthService {
       }));
 
   }
+  //
   user(): string {
     const token = this.env.authToken();
     if (token) {
@@ -33,6 +34,16 @@ export class AuthService {
       return decodedToken.unique_name;
     } else {
       return '';
+    }
+  }
+  //
+  userId(): number {
+    const token = this.env.authToken();
+    if (token) {
+      const decodedToken = this.jwtHelperService.decodeToken(token);
+      return decodedToken.nameid;
+    } else {
+      return -1;
     }
   }
   //

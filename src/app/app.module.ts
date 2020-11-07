@@ -34,6 +34,9 @@ import { MemberDetailedResolve } from './_resolver/member-detailed.resolver';
 import { MemberListResolve } from './_resolver/member-list.resolver';
 import { UsersService } from './_services/users/Users.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
+import { MemberEditResolve } from './_resolver/member-edit.resolver';
+import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
 
 
 
@@ -52,6 +55,7 @@ const environmentService = new EnvironmentService();
       MemberListComponent,
       MemberCardComponent,
       MemberDetailComponent,
+      MemberEditComponent,
    ],
    imports: [
       BrowserModule,
@@ -75,13 +79,15 @@ const environmentService = new EnvironmentService();
 
    ],
    providers: [
+      UrlInterceptorProvider,
+      SecurityInterceptorProvider,
+      ErrorInterceptorProvider,
+      PreventUnsavedChangesGuard,
       AuthService,
       ValuesService,
       UsersService,
       EnvironmentService,
-      UrlInterceptorProvider,
-      SecurityInterceptorProvider,
-      ErrorInterceptorProvider,
+      MemberEditResolve,
       MemberDetailedResolve,
       MemberListResolve,
    ],

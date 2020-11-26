@@ -1,14 +1,27 @@
-import { Injectable } from '@angular/core';
-
+import { EventEmitter, Injectable } from '@angular/core';
+import { User } from 'src/app/models/all';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class EnvironmentService {
 
-  constructor() { }
+  private photoUrl: BehaviorSubject<string>;
+  currentPhotoUrl: Observable<string>;
+
+
+  constructor() {
+    const user = this.getUser();
+    if (user != null && user.photoUrl != null) {
+      this.photoUrl = new BehaviorSubject<string>(user.photoUrl);
+    } else {
+      this.photoUrl = new BehaviorSubject<string>('../../assets/user.png');
+    }
+    this.currentPhotoUrl = this.photoUrl.asObservable();
+  }
   //
   baseUrl(): string {
-    return 'http://localhost:41923/api/';
+    return 'https://localhost:44367/api/';
   }
   //
   baseUrlClient(): string {
@@ -23,7 +36,18 @@ export class EnvironmentService {
     localStorage.setItem('token', token);
   }
   //
-  removeAuthToken() {
+  removeAuth() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
+  //
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.photoUrl.next(user.photoUrl);
+  }
+  //
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user'));
+  }
+
 }

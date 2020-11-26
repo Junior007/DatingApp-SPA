@@ -10,6 +10,7 @@ export interface LoginUser {
 //
 export interface UserToken {
     token: string;
+    user: User;
 }
 //
 export interface User {
@@ -26,11 +27,11 @@ export interface User {
     lookingFor?: string;
     interests?: string;
     photoUrl?: string;
-    photos?: Photos[];
+    photos?: Photo[];
 
 }
 //
-export interface Photos {
+export interface Photo {
     id: number;
     description: string;
     url: string;

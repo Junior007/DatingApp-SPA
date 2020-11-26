@@ -12,7 +12,7 @@ export class UsersService {
 
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>('users/' + id.toString());
+    return this.http.get<User>('users/' + id);
   }
   //
   getUsers(): Observable<User[]> {
@@ -21,6 +21,14 @@ export class UsersService {
   //
   putUser(id: number, user: User) {
     return this.http.put('users/' + id, user);
+  }
+  //
+  setMainPhoto(userId: number, photoId: number) {
+    return this.http.post('users/' + userId + '/photos/' + photoId + '/setMain/', {});
+  }
+  //
+  deletePhoto(userId: number, photoId: number){
+    return this.http.delete('users/' + userId + '/photos/' + photoId + '/DeletePhoto/', {});
   }
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/all';
 import { AlertifyService } from 'src/app/_services/alertify/alertify.service';
-import { UsersService } from 'src/app/_services/users/Users.service';
+import { UsersService } from 'src/app/_services/users/users.service';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 
 @Component({

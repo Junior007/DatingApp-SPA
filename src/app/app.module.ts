@@ -32,11 +32,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { appRoutes } from './routes';
 import { MemberDetailedResolve } from './_resolver/member-detailed.resolver';
 import { MemberListResolve } from './_resolver/member-list.resolver';
-import { UsersService } from './_services/users/Users.service';
+import { UsersService } from './_services/users/users.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { MemberEditComponent } from './components/members/member-edit/member-edit.component';
 import { MemberEditResolve } from './_resolver/member-edit.resolver';
 import { PreventUnsavedChangesGuard } from './_guards/prevent-unsaved-changes.guard';
+import { PhotoEditorComponent } from './components/members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -56,6 +58,7 @@ const environmentService = new EnvironmentService();
       MemberCardComponent,
       MemberDetailComponent,
       MemberEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
@@ -63,6 +66,7 @@ const environmentService = new EnvironmentService();
       AppRoutingModule,
       RouterModule.forRoot(appRoutes),
       HttpClientModule,
+      FileUploadModule,
       JwtModule.forRoot({
          config: {
             tokenGetter: (request) => environmentService.authToken(),

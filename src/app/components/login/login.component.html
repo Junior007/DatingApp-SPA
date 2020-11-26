@@ -1,7 +1,7 @@
 <div class="dropdown" dropdown *ngIf="isLogged()">
-
+       <span><img src="{{photoUrl}}" alt="" class="mr-1"></span>
        <a class="dropdown-toggle text-light" dropdownToggle>
-              Welcome {{user()|titlecase}}
+              Welcome {{user()|titlecase}} 
        </a>
 
        <div class="dropdown-menu mt-3" *dropdownMenu>

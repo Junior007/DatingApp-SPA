@@ -21,6 +21,7 @@ export class AuthService {
         const user = response;
         if (user) {
           this.env.setAuthToken(user.token);
+          this.env.setUser(user.user);
         }
 
       }));
@@ -48,7 +49,7 @@ export class AuthService {
   }
   //
   logOut(): Observable<boolean> {
-    this.env.removeAuthToken();
+    this.env.removeAuth();
     return new Observable<boolean>(
       subscriber => {
         subscriber.next(true);

@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/all';
 import { AlertifyService } from 'src/app/_services/alertify/alertify.service';
 import { AuthService } from 'src/app/_services/auth/auth.service';
-import { UsersService } from 'src/app/_services/users/Users.service';
+import { EnvironmentService } from 'src/app/_services/environment/environment.service';
+import { UsersService } from 'src/app/_services/users/users.service';
 
 @Component({
   selector: 'app-member-edit',
@@ -12,12 +13,13 @@ import { UsersService } from 'src/app/_services/users/Users.service';
   styleUrls: ['./member-edit.component.css']
 })
 export class MemberEditComponent implements OnInit {
-
+  photoUrl: string;
 
   constructor(private route: ActivatedRoute,
-    private alertify: AlertifyService,
-    private userService: UsersService,
-    private authService: AuthService) { }
+              private alertify: AlertifyService,
+              private userService: UsersService,
+              private authService: AuthService,
+              private env: EnvironmentService) { }
 
   @ViewChild('editForm') editForm: NgForm;
 
@@ -34,6 +36,11 @@ export class MemberEditComponent implements OnInit {
       data => { this.user = data['user']; }
 
     );
+    this.env.currentPhotoUrl.subscribe(
+      photoUrl => {
+        this.photoUrl = photoUrl;
+      }
+    );
   }
   //
   updateUser() {
@@ -48,5 +55,8 @@ export class MemberEditComponent implements OnInit {
     );
 
   }
-
+  //
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
+  }
 }

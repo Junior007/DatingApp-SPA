@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { User } from '../models/all';
 import { AlertifyService } from '../_services/alertify/alertify.service';
 import { AuthService } from '../_services/auth/auth.service';
-import { UsersService } from '../_services/users/Users.service';
+import { UsersService } from '../_services/users/users.service';
 
 
 @Injectable()

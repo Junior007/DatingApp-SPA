@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
 
+##Scope
+
+This is a project form udemy course for develope a SPA in angular, update to angular 9. The page is a dating application. Is relate to DatingApp-Api, the REST services for back-end bussines
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
